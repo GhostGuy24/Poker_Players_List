@@ -36,5 +36,5 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/poker-pros-management.git
+   git clone https://github.com/GhostGuy24/Poker_Players_List.git
    cd poker-pros-management
