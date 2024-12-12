@@ -1,0 +1,18 @@
+{
+  "players": [
+    {
+      "id": "a137",
+      "name": "Jason Koon",
+      "age": "36",
+      "nationality": "US",
+      "earnings": "100000"
+    },
+    {
+      "id": "d130",
+      "name": "Patrick Anotonious ",
+      "age": "50",
+      "nationality": "Finland",
+      "earnings": "40000000"
+    }
+  ]
+}

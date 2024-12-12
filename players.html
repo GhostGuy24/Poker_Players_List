@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <input id="playerName" type="text" placeholder="Player Name">
+        <input id="playerAge" type="number" placeholder="Player Age">
+        <input id="playerNationality" type="text" placeholder="Player Nationality">
+        <input id="playerEarnings" type="number" placeholder="Player Earnings">
+        <button onclick="create()">Add Player</button>
+    </div>
+
+    <hr>
+    <h1>Poker Pros:</h1>
+    <hr>
+    <div id="display"></div>
+
+    <script>
+        const SERVER = "http://localhost:3000/players"
+
+        //CRUD
+
+        //read
+        const read =() => axios(SERVER).then(res => display.innerHTML = res.data.map(players =>`
+                                            <button onclick="del('${players.id}')">Delete</button>
+                                            <button onclick="update('${players.id}')">Update</button><br>
+                                            Full Name : ${players.name}<br>
+                                            Age : ${players.age}<br>
+                                            Nationality : ${players.nationality}<br>
+                                            Total Earnings: ${players.earnings }<br>
+                                             `).join(""))
+        read()
+        //create
+        const create = () => {axios.post(SERVER, {"name" : playerName.value, 
+                                                "age" : playerAge.value , 
+                                                "nationality" : playerNationality.value , 
+                                                "earnings" : playerEarnings.value
+                                                })}
+            read()
+
+        //delete
+        const del = (id) => axios.delete(SERVER +`/${id}`)
+        read()
+
+        //update
+        const update =(id) => axios.put(SERVER + `/${id}`,{"name" : playerName.value,
+                                                         "age" : playerAge.value , 
+                                                         "nationality" : playerNationality.value , 
+                                                         "earnings" : playerEarnings.value
+                                                        })
+        read()
+
+
+    </script>
+
+</body>
+
+</html>
